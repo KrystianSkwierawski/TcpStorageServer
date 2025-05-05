@@ -31,3 +31,5 @@ Note: This section is for stages 2 and beyond.
    `src/Server.cs`.
 1. Commit your changes and run `git push origin master` to submit your solution
    to CodeCrafters. Test output will be streamed to your terminal.
+
+   telnet 127.0.0.1 6379

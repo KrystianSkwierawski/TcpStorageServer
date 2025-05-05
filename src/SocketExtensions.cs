@@ -7,7 +7,7 @@ namespace codecrafters_redis.src
     {
         public static async Task SendMessageAsync(this Socket socket, string message)
         {
-            var buffer = Encoding.ASCII.GetBytes("+PONG\r\n");
+            var buffer = Encoding.ASCII.GetBytes($"\r\n{message}\r\n");
             await socket.SendAsync(buffer);
         }
     }
