@@ -1,4 +1,4 @@
-﻿namespace codecrafters_redis.src
+﻿namespace CodeCraftersRedis.Common.Consts
 {
     public class CommandsConst
     {

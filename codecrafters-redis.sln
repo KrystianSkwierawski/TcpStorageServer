@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1700.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codecrafters-redis", "codecrafters-redis.csproj", "{D133C1BC-18C6-4906-A04C-7104C5285736}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeCraftersRedis", "src\CodeCraftersRedis\CodeCraftersRedis.csproj", "{D133C1BC-18C6-4906-A04C-7104C5285736}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{95C2F2C4-2287-4AF4-BB02-84E033559CA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B0328215-10AC-4CDD-B581-EEE4611C71FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeCraftersRedis.Common", "src\CodeCraftersRedis.Common\CodeCraftersRedis.Common.csproj", "{9E067626-8C46-45FF-99B5-5B203C20F539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeCraftersRedis.IntegrationTests", "tests\CodeCraftersRedis.IntegrationTests\CodeCraftersRedis.IntegrationTests.csproj", "{BFCA3B64-E5A9-4899-BA90-E6C780E0BA52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,22 @@ Global
 		{D133C1BC-18C6-4906-A04C-7104C5285736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D133C1BC-18C6-4906-A04C-7104C5285736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D133C1BC-18C6-4906-A04C-7104C5285736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E067626-8C46-45FF-99B5-5B203C20F539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E067626-8C46-45FF-99B5-5B203C20F539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E067626-8C46-45FF-99B5-5B203C20F539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E067626-8C46-45FF-99B5-5B203C20F539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCA3B64-E5A9-4899-BA90-E6C780E0BA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCA3B64-E5A9-4899-BA90-E6C780E0BA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCA3B64-E5A9-4899-BA90-E6C780E0BA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCA3B64-E5A9-4899-BA90-E6C780E0BA52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D133C1BC-18C6-4906-A04C-7104C5285736} = {95C2F2C4-2287-4AF4-BB02-84E033559CA3}
+		{9E067626-8C46-45FF-99B5-5B203C20F539} = {95C2F2C4-2287-4AF4-BB02-84E033559CA3}
+		{BFCA3B64-E5A9-4899-BA90-E6C780E0BA52} = {B0328215-10AC-4CDD-B581-EEE4611C71FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FEE7CEA9-874B-4F36-8451-CC1F1F2EB241}
