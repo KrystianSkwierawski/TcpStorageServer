@@ -1,7 +1,7 @@
-﻿using CodeCraftersRedis.Common.Consts;
+﻿using TcpStorageServer.Common.Consts;
 using FluentAssertions;
 
-namespace CodeCraftersRedis.IntegrationTests
+namespace TcpStorageServer.IntegrationTests
 {
     public class ServerTests : BaseTest
     {

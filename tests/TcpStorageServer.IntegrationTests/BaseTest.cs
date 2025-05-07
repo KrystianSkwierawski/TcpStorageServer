@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Text;
 
-namespace CodeCraftersRedis.IntegrationTests
+namespace TcpStorageServer.IntegrationTests
 {
     public class BaseTest
     {

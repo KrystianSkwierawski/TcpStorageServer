@@ -1,4 +1,4 @@
-﻿namespace CodeCraftersRedis.Common.Models
+﻿namespace TcpStorageServer.Common.Models
 {
     public class StorageValue
     {

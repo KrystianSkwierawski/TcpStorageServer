@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 
-namespace CodeCraftersRedis
+namespace TcpStorageServer
 {
     public class Server
     {

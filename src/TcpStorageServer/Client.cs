@@ -1,10 +1,10 @@
 ﻿using System.Net.Sockets;
 using System.Text;
-using CodeCraftersRedis.Common.Consts;
-using CodeCraftersRedis.Common.Extensions;
-using CodeCraftersRedis.Common.Models;
+using TcpStorageServer.Common.Consts;
+using TcpStorageServer.Common.Extensions;
+using TcpStorageServer.Common.Models;
 
-namespace CodeCraftersRedis
+namespace TcpStorageServer
 {
     public class Client
     {

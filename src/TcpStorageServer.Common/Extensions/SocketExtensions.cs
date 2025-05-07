@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Text;
 
-namespace CodeCraftersRedis.Common.Extensions
+namespace TcpStorageServer.Common.Extensions
 {
     public static class SocketExtensions
     {

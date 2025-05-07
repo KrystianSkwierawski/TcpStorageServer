@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\CodeCraftersRedis.Common\CodeCraftersRedis.Common.csproj" />
-    <ProjectReference Include="..\..\src\CodeCraftersRedis\CodeCraftersRedis.csproj" />
+    <ProjectReference Include="..\..\src\TcpStorageServer.Common\TcpStorageServer.Common.csproj" />
+    <ProjectReference Include="..\..\src\TcpStorageServer\TcpStorageServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>

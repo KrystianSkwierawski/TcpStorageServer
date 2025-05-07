@@ -1,4 +1,4 @@
-﻿namespace CodeCraftersRedis.Common.Consts
+﻿namespace TcpStorageServer.Common.Consts
 {
     public class CommandsConst
     {

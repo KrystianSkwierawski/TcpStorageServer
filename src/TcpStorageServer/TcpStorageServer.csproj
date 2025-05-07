@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CodeCraftersRedis.Common\CodeCraftersRedis.Common.csproj" />
+    <ProjectReference Include="..\TcpStorageServer.Common\TcpStorageServer.Common.csproj" />
   </ItemGroup>
 
 </Project>
