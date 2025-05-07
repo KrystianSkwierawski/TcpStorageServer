@@ -24,7 +24,7 @@ namespace CodeCraftersRedis.IntegrationTests
         {
             _ = Task.Run(async () =>
             {
-                using var server = new Server();
+                var server = new Server();
                 await server.StartAsync();
             });
 

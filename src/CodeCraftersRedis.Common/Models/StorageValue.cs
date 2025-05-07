@@ -2,8 +2,8 @@
 {
     public class StorageValue
     {
-        public required string Value { get; set; }
+        public required string Value { get; init; }
 
-        public DateTime ExpiryDate { get; set; }
+        public DateTime ExpiryDate { get; init; }
     }
 }

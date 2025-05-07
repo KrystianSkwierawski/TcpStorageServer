@@ -3,34 +3,24 @@ using System.Net.Sockets;
 
 namespace CodeCraftersRedis
 {
-    public class Server : IDisposable
+    public class Server
     {
-        private readonly TcpListener _server;
-
-        public Server(int port = 6379)
-        {
-            _server = new TcpListener(IPAddress.Any, port);
-        }
-
         public async Task StartAsync()
         {
-            _server.Start();
+            using var server = new TcpListener(IPAddress.Any, 6379);
+            server.Start();
 
             Console.WriteLine($"Server started");
 
             while (true)
-            {
-                var socket = await _server.AcceptSocketAsync();
-
-                var service = new Client();
-
-                _ = Task.Run(async () => await service.HandleClientAsync(socket));
+            {            
+                _ = Task.Run(async () =>
+                {
+                    using var socket = await server.AcceptSocketAsync();
+                    var client = new Client();
+                    await client.ConnectAsync(socket);
+                });
             }
-        }
-
-        public void Dispose()
-        {
-            _server.Dispose();
         }
     }
 }

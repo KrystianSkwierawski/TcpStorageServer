@@ -10,7 +10,7 @@ namespace CodeCraftersRedis
     {
         private readonly Dictionary<string, StorageValue> _storage = new Dictionary<string, StorageValue>();
 
-        public async Task HandleClientAsync(Socket socket)
+        public async Task ConnectAsync(Socket socket)
         {
             Console.WriteLine("New client connected");
 
@@ -76,7 +76,7 @@ namespace CodeCraftersRedis
             var storageValue = new StorageValue
             {
                 Value = value,
-                ExpiryDate = DateTime.Now.AddMicroseconds(int.Parse(expiry))
+                ExpiryDate = DateTime.Now.AddMilliseconds(int.Parse(expiry))
             };
 
             _storage.Add(key, storageValue);

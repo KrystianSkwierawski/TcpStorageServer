@@ -13,7 +13,7 @@ namespace CodeCraftersRedis.IntegrationTests
 
         [Test]
         [TestCase("asdasdasd 123123")]
-        public async Task EchoTests(string message)
+        public async Task EchoTest(string message)
         {
             var request = $"{CommandsConst.Echo} {message}\n";
 
@@ -24,7 +24,7 @@ namespace CodeCraftersRedis.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue")]
-        public async Task SetWithourParamsTests(string key, string value)
+        public async Task SetWithoutParamsTest(string key, string value)
         {
             var request = $"{CommandsConst.Set} {key} {value}\n";
 
@@ -35,7 +35,7 @@ namespace CodeCraftersRedis.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue")]
-        public async Task GetWithoutParamsTests(string key, string value)
+        public async Task GetWithoutParamsTest(string key, string value)
         {
             var request = $"{CommandsConst.Get} {key}\n";
 
@@ -45,6 +45,7 @@ namespace CodeCraftersRedis.IntegrationTests
             result.Should().Be($"\r\n{value}\r\n");
         }
 
+        // TODO params
 
         [TearDown]
         public void TearDown()
