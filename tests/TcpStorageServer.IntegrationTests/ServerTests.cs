@@ -1,24 +1,22 @@
-﻿using TcpStorageServer.Common.Consts;
-using FluentAssertions;
+﻿using FluentAssertions;
+using TcpStorageServer.Common.Consts;
 
 namespace TcpStorageServer.IntegrationTests
 {
-    public class ServerTests : BaseTest
+    public class ServerTests
     {
-        [SetUp]
-        public async Task SetUp()
-        {
-            await ConnectAsync();
-        }
-
         [Test]
         [TestCase("asdasdasd 123123")]
         public async Task EchoTest(string message)
         {
+            // Arrange
+            using var client = new TestClient();
             var request = $"{CommandsConst.Echo} {message}\n";
 
-            var result = await SendRequestAsync(request);
+            // Act
+            var result = await client.SendRequestAsync(request);
 
+            // Assert
             result.Should().Be($"\r\n{message}\r\n");
         }
 
@@ -26,10 +24,14 @@ namespace TcpStorageServer.IntegrationTests
         [TestCase("testkey", "testvalue")]
         public async Task SetWithoutParamsTest(string key, string value)
         {
+            // Arrange
+            using var client = new TestClient();
             var request = $"{CommandsConst.Set} {key} {value}\n";
 
-            var result = await SendRequestAsync(request);
+            // Act
+            var result = await client.SendRequestAsync(request);
 
+            // Assert
             result.Should().Contain(key);
         }
 
@@ -37,20 +39,43 @@ namespace TcpStorageServer.IntegrationTests
         [TestCase("testkey", "testvalue")]
         public async Task GetWithoutParamsTest(string key, string value)
         {
+            // Arrange
+            using var client = new TestClient();
             var request = $"{CommandsConst.Get} {key}\n";
 
-            await SendRequestAsync($"{CommandsConst.Set} {key} {value}\n");
-            var result = await SendRequestAsync(request);
+            // Act
+            await client.SendRequestAsync($"{CommandsConst.Set} {key} {value}\n");
+            var result = await client.SendRequestAsync(request);
 
+            // Assert
             result.Should().Be($"\r\n{value}\r\n");
         }
 
-        // TODO params
-
-        [TearDown]
-        public void TearDown()
+        [Test]
+        [TestCase("testkey", "testvalue", 5)] 
+        public async Task MultipleClientsTest(string key, string value, int clientsCount)
         {
-            Disconnect();
+            // Arrange
+            var clients = new List<TestClient>();
+
+            for (int i = 0; i < clientsCount; i++)
+            {
+                var client = new TestClient();
+                clients.Add(client);
+
+                await client.SendRequestAsync($"{CommandsConst.Set} {key} {value}_client{i}\n");
+            }
+
+            // Act & Assert
+            for (int i = 0; i < clientsCount; i++)
+            {
+                var request = $"{CommandsConst.Get} {key}\n";
+                var result = await clients[i].SendRequestAsync(request);
+
+                result.Should().Be($"\r\n{value}_client{i}\r\n");
+            }
+
+            clients.ForEach(client => client.Dispose());
         }
     }
 }
