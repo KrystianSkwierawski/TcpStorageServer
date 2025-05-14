@@ -6,7 +6,8 @@ namespace TcpStorageServer.IntegrationTests
     public class ServerTests
     {
         [Test]
-        [TestCase("test message 123")]
+        [TestCase("test message")]
+        [Order(0)]
         public async Task EchoTest(string message)
         {
             // Arrange
@@ -22,6 +23,7 @@ namespace TcpStorageServer.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue")]
+        [Order(1)]
         public async Task SetWithoutParamsTest(string key, string value)
         {
             // Arrange
@@ -37,6 +39,7 @@ namespace TcpStorageServer.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue")]
+        [Order(2)]
         public async Task GetWithoutParamsTest(string key, string value)
         {
             // Arrange
@@ -53,6 +56,7 @@ namespace TcpStorageServer.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue", 1000)]
+        [Order(3)]
         public async Task GetWithExpiry(string key, string value, int expiry)
         {
             // Arrange
@@ -69,7 +73,8 @@ namespace TcpStorageServer.IntegrationTests
         }
 
         [Test]
-        [TestCase("testkey", "testvalue", 5)] 
+        [TestCase("testkey", "testvalue", 5)]
+        [Order(0)]
         public async Task MultipleClientsTest(string key, string value, int clientsCount)
         {
             // Arrange

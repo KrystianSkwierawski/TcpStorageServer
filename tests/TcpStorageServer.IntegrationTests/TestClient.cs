@@ -16,7 +16,7 @@ namespace TcpStorageServer.IntegrationTests
                 await server.StartAsync();
             });
 
-            Task.Delay(1000);
+            Task.Delay(2000);
 
             _client = new TcpClient();
             _client.Connect("127.0.0.1", 6379);
