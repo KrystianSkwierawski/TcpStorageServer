@@ -6,7 +6,7 @@ namespace TcpStorageServer.IntegrationTests
     public class ServerTests
     {
         [Test]
-        [TestCase("asdasdasd 123123")]
+        [TestCase("test message 123")]
         public async Task EchoTest(string message)
         {
             // Arrange
@@ -49,6 +49,23 @@ namespace TcpStorageServer.IntegrationTests
 
             // Assert
             result.Should().Be($"\r\n{value}\r\n");
+        }
+
+        [Test]
+        [TestCase("testkey", "testvalue", 1000)]
+        public async Task GetWithExpiry(string key, string value, int expiry)
+        {
+            // Arrange
+            using var client = new TestClient();
+            var request = $"{CommandsConst.Get} {key}\n";
+
+            // Act
+            await client.SendRequestAsync($"{CommandsConst.Set} {key} {value} {expiry}\n");
+            await Task.Delay(expiry);
+            var result = await client.SendRequestAsync(request);
+
+            // Assert
+            result.Should().Be("\r\n$-1\r\n");
         }
 
         [Test]
