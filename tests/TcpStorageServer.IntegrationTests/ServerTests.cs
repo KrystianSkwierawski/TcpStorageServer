@@ -74,7 +74,7 @@ namespace TcpStorageServer.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue", 5)]
-        [Order(0)]
+        [Order(4)]
         public async Task MultipleClientsTest(string key, string value, int clientsCount)
         {
             // Arrange
