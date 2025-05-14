@@ -10,7 +10,7 @@ namespace TcpStorageServer.IntegrationTests
         public async Task EchoTest(string message)
         {
             // Arrange
-            var client = new TestClient();
+            using var client = new TestClient();
             var request = $"{CommandsConst.Echo} {message}\n";
 
             // Act
@@ -25,7 +25,7 @@ namespace TcpStorageServer.IntegrationTests
         public async Task SetWithoutParamsTest(string key, string value)
         {
             // Arrange
-            var client = new TestClient();
+            using var client = new TestClient();
             var request = $"{CommandsConst.Set} {key} {value}\n";
 
             // Act
@@ -40,7 +40,7 @@ namespace TcpStorageServer.IntegrationTests
         public async Task GetWithoutParamsTest(string key, string value)
         {
             // Arrange
-            var client = new TestClient();
+            using var client = new TestClient();
             var request = $"{CommandsConst.Get} {key}\n";
 
             // Act
@@ -56,7 +56,7 @@ namespace TcpStorageServer.IntegrationTests
         public async Task GetWithExpiry(string key, string value, int expiry)
         {
             // Arrange
-            var client = new TestClient();
+            using var client = new TestClient();
             var request = $"{CommandsConst.Get} {key}\n";
 
             // Act
@@ -91,6 +91,8 @@ namespace TcpStorageServer.IntegrationTests
 
                 result.Should().Be($"\r\n{value}_client{i}\r\n");
             }
+
+            clients.ForEach(client => client.Dispose());
         }
     }
 }
