@@ -5,6 +5,18 @@ namespace TcpStorageServer.IntegrationTests
 {
     public class ServerTests
     {
+        [SetUp]
+        public async Task SetUp()
+        {
+            _ = Task.Run(async () =>
+            {
+                var server = new Server();
+                await server.StartAsync();
+            });
+
+            await Task.Delay(1000);
+        }
+
         [Test]
         [TestCase("test message")]
         public async Task EchoTest(string message)

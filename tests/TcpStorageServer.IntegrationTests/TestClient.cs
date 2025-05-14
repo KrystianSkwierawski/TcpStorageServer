@@ -10,14 +10,6 @@ namespace TcpStorageServer.IntegrationTests
 
         public TestClient()
         {
-            _ = Task.Run(async () =>
-            {
-                var server = new Server();
-                await server.StartAsync();
-            });
-
-            Task.Delay(5000);
-
             _client = new TcpClient();
             _client.Connect("127.0.0.1", 6379);
             _stream = _client.GetStream();
