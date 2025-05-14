@@ -3,7 +3,7 @@ using System.Text;
 
 namespace TcpStorageServer.IntegrationTests
 {
-    public class TestClient : IDisposable
+    public class TestClient
     {
         private TcpClient _client;
         private NetworkStream _stream;
@@ -33,12 +33,6 @@ namespace TcpStorageServer.IntegrationTests
             var response = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
             return response;
-        }
-
-        public void Dispose()
-        {
-            _client.Dispose();
-            _stream.Dispose();
         }
     }
 }

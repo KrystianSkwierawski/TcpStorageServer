@@ -7,11 +7,10 @@ namespace TcpStorageServer.IntegrationTests
     {
         [Test]
         [TestCase("test message")]
-        [Order(0)]
         public async Task EchoTest(string message)
         {
             // Arrange
-            using var client = new TestClient();
+            var client = new TestClient();
             var request = $"{CommandsConst.Echo} {message}\n";
 
             // Act
@@ -23,11 +22,10 @@ namespace TcpStorageServer.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue")]
-        [Order(1)]
         public async Task SetWithoutParamsTest(string key, string value)
         {
             // Arrange
-            using var client = new TestClient();
+            var client = new TestClient();
             var request = $"{CommandsConst.Set} {key} {value}\n";
 
             // Act
@@ -39,11 +37,10 @@ namespace TcpStorageServer.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue")]
-        [Order(2)]
         public async Task GetWithoutParamsTest(string key, string value)
         {
             // Arrange
-            using var client = new TestClient();
+            var client = new TestClient();
             var request = $"{CommandsConst.Get} {key}\n";
 
             // Act
@@ -56,11 +53,10 @@ namespace TcpStorageServer.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue", 1000)]
-        [Order(3)]
         public async Task GetWithExpiry(string key, string value, int expiry)
         {
             // Arrange
-            using var client = new TestClient();
+            var client = new TestClient();
             var request = $"{CommandsConst.Get} {key}\n";
 
             // Act
@@ -74,7 +70,6 @@ namespace TcpStorageServer.IntegrationTests
 
         [Test]
         [TestCase("testkey", "testvalue", 5)]
-        [Order(4)]
         public async Task MultipleClientsTest(string key, string value, int clientsCount)
         {
             // Arrange
@@ -96,8 +91,6 @@ namespace TcpStorageServer.IntegrationTests
 
                 result.Should().Be($"\r\n{value}_client{i}\r\n");
             }
-
-            clients.ForEach(client => client.Dispose());
         }
     }
 }
